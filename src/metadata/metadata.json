@@ -1,0 +1,1621 @@
+{
+  "package": "OnFleet",
+  "tagline": "OnFleet API",
+  "description": "The Onfleet API is a RESTful web service for developers and integrations to programmatically interact with Onfleet’s data and real-time delivery management and analytics functionality.",
+  "image": "http:\/\/logo.clearbit.com\/onfleet.com",
+  "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-OnFleet-Package",
+  "keywords": [
+    "API",
+    "delivery"
+  ],
+  "accounts": {
+    "domain": "onfleet.com",
+    "credentials": [
+      "apiKey"
+    ]
+  },
+  "events": [
+    {
+      "name": "webhookEvent",
+      "description": "This method is called every time when webhook event happens",
+      "payload": {
+        "list_folder": {
+          "accounts": [
+            "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+          ]
+        },
+        "delta": {
+          "users": [
+            12345678,
+            23456789
+          ]
+        }
+      },
+      "steps": [
+        "Go to add createWebhook block",
+        "Set webhookUrl to __WEBHOOK_URL__"
+      ],
+      "args": [
+        {
+          "name": "token",
+          "type": "string",
+          "info": "Token sent on each message",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "name": "testAuth",
+      "description": "Check that your API key is valid.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getOrganizationDetails",
+      "description": "Retrieve your own organization's details.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getDelegateeDetails",
+      "description": "Retrieve the details of an organization with which you are connected.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "organizationId",
+          "type": "String",
+          "info": "Id of the organization",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createAdministrator",
+      "description": "Creates a new administrator in your organization. An email will be sent for this administrator to confirm and configure their account.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The administrator’s complete name.",
+          "required": true
+        },
+        {
+          "name": "email",
+          "type": "String",
+          "info": "The administrator’s email address.",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "type": "String",
+          "info": "The administrator's phone number.",
+          "required": true
+        },
+        {
+          "name": "isReadOnly",
+          "type": "String",
+          "info": "Whether this administrator can perform write operations.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listAdministrators",
+      "description": "Lists administrators",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateAdministrator",
+      "description": "Updates an administrator in your organization.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "administratorId",
+          "type": "String",
+          "info": "The administrator’s id",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The administrator’s complete name.",
+          "required": false
+        },
+        {
+          "name": "email",
+          "type": "String",
+          "info": "The administrator’s email address.",
+          "required": false
+        },
+        {
+          "name": "phone",
+          "type": "String",
+          "info": "The administrator's phone number.",
+          "required": false
+        },
+        {
+          "name": "isReadOnly",
+          "type": "String",
+          "info": "Whether this administrator can perform write operations.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteAdministrator",
+      "description": "Deletes an administrator in your organization.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "administratorId",
+          "type": "String",
+          "info": "The administrator’s id",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createWorker",
+      "description": "Creating a new worker generates a temporary password which is sent to the worker’s phone by SMS along with download details for the worker iOS and Android mobile apps.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The worker’s complete name.",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "type": "String",
+          "info": "A valid phone number as per the worker’s organization’s country.",
+          "required": true
+        },
+        {
+          "name": "teams",
+          "type": "List",
+          "structure": {
+            "name": "teamId",
+            "type": "String",
+            "info": "Single team id "
+          },
+          "info": "One or more team IDs of which the worker is a member.",
+          "required": true
+        },
+        {
+          "name": "vehicle",
+          "type": "JSON",
+          "info": "The worker’s vehicle; providing no vehicle details is equivalent to the worker being on foot.",
+          "required": false
+        },
+        {
+          "name": "capacity",
+          "type": "Number",
+          "info": "The maximum number of units this worker can carry, for route optimization purposes.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listWorkers",
+      "description": "List all available workers",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "teams",
+          "type": "List",
+          "structure": {
+            "name": "teamId",
+            "type": "String",
+            "info": "Single team id "
+          },
+          "info": "An array of the team IDs that workers must be part of.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "List",
+          "structure": {
+            "name": "filterName",
+            "type": "String",
+            "info": "Single filter name"
+          },
+          "info": " An array of fields to return, if all are not desired. For example, name, location.",
+          "required": false
+        },
+        {
+          "name": "states",
+          "type": "List",
+          "structure": {
+            "name": "state",
+            "type": "Number",
+            "info": "Single state"
+          },
+          "info": " An array of worker states, where 0 is off-duty, 1 is idle (on-duty, no active task) and 2 is active (on-duty, active task).",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getWorkersByLocation",
+      "description": "List all available workers by coordinates",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "coordinates",
+          "type": "Map",
+          "info": "Longitude and latitude coma-separated",
+          "required": true
+        },
+        {
+          "name": "radius",
+          "type": "Number",
+          "info": "The length in meters of the radius of the spherical area in which to look for workers. Defaults to 1000 if missing. Maximum value is 10000.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleWorker",
+      "description": "Get single worker by Id",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "workerId",
+          "type": "String",
+          "info": "Id of the worker",
+          "required": true
+        },
+        {
+          "name": "filter",
+          "type": "List",
+          "structure": {
+            "name": "filterName",
+            "type": "String",
+            "info": "Single filter name"
+          },
+          "info": " An array of fields to return, if all are not desired. For example, name, location.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateWorker",
+      "description": "Update existing worker",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "workerId",
+          "type": "String",
+          "info": "Id of the worker",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The worker’s complete name.",
+          "required": false
+        },
+        {
+          "name": "teams",
+          "type": "List",
+          "structure": {
+            "name": "teamId",
+            "type": "String",
+            "info": "Single team id "
+          },
+          "info": "One or more team IDs of which the worker is a member.",
+          "required": false
+        },
+        {
+          "name": "vehicle",
+          "type": "JSON",
+          "info": "The worker’s vehicle; providing no vehicle details is equivalent to the worker being on foot.",
+          "required": false
+        },
+        {
+          "name": "capacity",
+          "type": "Number",
+          "info": "The maximum number of units this worker can carry, for route optimization purposes.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteWorker",
+      "description": "Delete single worker by Id",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "workerId",
+          "type": "String",
+          "info": "Id of the worker",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listHubs",
+      "description": "A hub is a depot for a team: the location from where all deliveries start for the team's workers, for the purposes of route optimization only; teams can have zero or one hubs. To create hubs, head over to the dashboard.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createTeam",
+      "description": "Teams are named entities that bring together administrators and workers belonging to the same organization. Teams have hubs from where its workers may start and end their shifts.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "A unique name for the team.",
+          "required": true
+        },
+        {
+          "name": "workers",
+          "type": "List",
+          "structure": {
+            "name": "workerId",
+            "type": "String",
+            "info": "Single worker id "
+          },
+          "info": "An array of worker IDs.",
+          "required": true
+        },
+        {
+          "name": "managers",
+          "type": "List",
+          "structure": {
+            "name": "managerId",
+            "type": "String",
+            "info": "Single manager id "
+          },
+          "info": "An array of managing administrator IDs.",
+          "required": true
+        },
+        {
+          "name": "hub",
+          "type": "String",
+          "info": "The ID of the team's hub.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateTeam",
+      "description": "Update existing team",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "teamId",
+          "type": "String",
+          "info": "A unique id of the team",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "A unique name for the team.",
+          "required": false
+        },
+        {
+          "name": "workers",
+          "type": "List",
+          "structure": {
+            "name": "workerId",
+            "type": "String",
+            "info": "Single worker id "
+          },
+          "info": "An array of worker IDs.",
+          "required": false
+        },
+        {
+          "name": "managers",
+          "type": "List",
+          "structure": {
+            "name": "managerId",
+            "type": "String",
+            "info": "Single manager id "
+          },
+          "info": "An array of managing administrator IDs.",
+          "required": false
+        },
+        {
+          "name": "hub",
+          "type": "String",
+          "info": "The ID of the team's hub.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listTeams",
+      "description": "List all available teams.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleTeam",
+      "description": "Get single team information",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "teamId",
+          "type": "String",
+          "info": "Single team id",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteTeam",
+      "description": "Delete single team",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "teamId",
+          "type": "String",
+          "info": "Single team id",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createDestination",
+      "description": "Destinations represent the location details for tasks, including exact coordinate and address information.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "addressName",
+          "type": "String",
+          "info": "A name associated with this address.",
+          "required": false
+        },
+        {
+          "name": "addressNumber",
+          "type": "String",
+          "info": "The number component of this address, it may also contain letters.",
+          "required": true
+        },
+        {
+          "name": "addressStreet",
+          "type": "String",
+          "info": "The name of the street.",
+          "required": true
+        },
+        {
+          "name": "addressApartment",
+          "type": "String",
+          "info": "The suite or apartment number, or any additional relevant information.",
+          "required": false
+        },
+        {
+          "name": "addressCity",
+          "type": "String",
+          "info": "The name of the municipality.",
+          "required": true
+        },
+        {
+          "name": "addressState",
+          "type": "String",
+          "info": "The name of the state, province or jurisdiction.",
+          "required": false
+        },
+        {
+          "name": "addressPostalCode",
+          "type": "String",
+          "info": "The postal or zip code.",
+          "required": false
+        },
+        {
+          "name": "addressCountry",
+          "type": "String",
+          "info": "The name of the country.",
+          "required": true
+        },
+        {
+          "name": "coordinates",
+          "type": "Map",
+          "info": "The longitude, latitude coma-separated. If missing, the API will geocode based on the address details provided. Note that geocoding may slightly modify the format of the address properties. ",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createDestinationFromRaw",
+      "description": "Destinations represent the location details for tasks, including exact coordinate and address information.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "unparsed",
+          "type": "String",
+          "info": "A complete address specified in a single, unparsed string where the various elements are separated by commas.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleDestination",
+      "description": "Get single destionation by Id",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "destinationId",
+          "type": "String",
+          "info": "Id of the destination",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createRecipient",
+      "description": "A recipient is an organization’s customer and a target for a task, that is, whom the task is being delivered to.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The recipient’s complete name.",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "type": "String",
+          "info": "A unique, valid phone number as per the recipient’s organization’s country.",
+          "required": true
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "info": "Notes for this recipient: these are global notes that should not be task- or destination-specific.",
+          "required": false
+        },
+        {
+          "name": "skipSMSNotifications",
+          "type": "Boolean",
+          "info": "Whether this recipient has requested to not receive SMS notifications. Defaults to false if not provided.",
+          "required": false
+        },
+        {
+          "name": "skipPhoneNumberValidation",
+          "type": "Boolean",
+          "info": "Whether to skip validation of this recipient's phone number. An E.164-like number is still required (must start with +), however the API will not enforce any country-specific validation rules.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateRecipient",
+      "description": "Update existing recipient.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "recipientId",
+          "type": "String",
+          "info": "The recipient’s id",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The recipient’s complete name.",
+          "required": false
+        },
+        {
+          "name": "phone",
+          "type": "String",
+          "info": "A unique, valid phone number as per the recipient’s organization’s country.",
+          "required": false
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "info": "Notes for this recipient: these are global notes that should not be task- or destination-specific.",
+          "required": false
+        },
+        {
+          "name": "skipSMSNotifications",
+          "type": "Boolean",
+          "info": "Whether this recipient has requested to not receive SMS notifications. Defaults to false if not provided.",
+          "required": false
+        },
+        {
+          "name": "skipPhoneNumberValidation",
+          "type": "Boolean",
+          "info": "Whether to skip validation of this recipient's phone number. An E.164-like number is still required (must start with +), however the API will not enforce any country-specific validation rules.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "findRecipientByPhone",
+      "description": "Search for recipient by phone",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "type": "String",
+          "info": "A unique, valid phone number as per the recipient’s organization’s country.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "findRecipientByName",
+      "description": "Search for recipient by name",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The recipient’s name.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleRecipient",
+      "description": "Get single recipient",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "recipientId",
+          "type": "String",
+          "info": "The recipient’s id.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createTask",
+      "description": "Create new task",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "merchant",
+          "type": "String",
+          "info": "The ID of the organization that will be displayed to the recipient of the task. Defaults to the creating organization. If you perform deliveries on behalf of a connected organization and want to display their name, logo, and branded notifications, provide their organization ID.",
+          "required": false
+        },
+        {
+          "name": "executor",
+          "type": "String",
+          "info": "The ID of the organization that will be responsible for fulfilling the task. Defaults to the creating organization. If you delegate your deliveries to a third party, provide their organization ID.",
+          "required": false
+        },
+        {
+          "name": "destinationId",
+          "type": "String",
+          "info": "The ID of the task's destination",
+          "required": true
+        },
+        {
+          "name": "recipientsIds",
+          "type": "List",
+          "structure": {
+            "name": "recipientId",
+            "type": "String",
+            "info": "Single recipient Id"
+          },
+          "info": "An array containing zero or one IDs of the task's recipients",
+          "required": true
+        },
+        {
+          "name": "completeAfter",
+          "type": "DatePicker",
+          "info": "A date Y-m-d H:m:s for the earliest time the task should be completed.",
+          "required": false
+        },
+        {
+          "name": "completeBefore",
+          "type": "DatePicker",
+          "info": "A date Y-m-d H:m:s for the latest time the task should be completed.",
+          "required": false
+        },
+        {
+          "name": "pickupTask",
+          "type": "Boolean",
+          "info": "Whether the task is a pickup task.",
+          "required": false
+        },
+        {
+          "name": "dependencies",
+          "type": "List",
+          "structure": {
+            "name": "dependencyId",
+            "type": "String",
+            "info": "Single dependency Id"
+          },
+          "info": "One or more IDs of tasks which must be completed prior to this task.",
+          "required": false
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "info": "Notes for the task.",
+          "required": false
+        },
+        {
+          "name": "autoAssign",
+          "type": "JSON",
+          "info": "The automatic assignment options for the newly created task. You may not provide a container if using automatic assignment.",
+          "required": false
+        },
+        {
+          "name": "container",
+          "type": "JSON",
+          "info": "The container to which to append this task. Defaults to the creator organization container.",
+          "required": false
+        },
+        {
+          "name": "quantity",
+          "type": "Number",
+          "info": "The number of units to be dropped off while completing this task, for route optimization purposes.",
+          "required": false
+        },
+        {
+          "name": "serviceTime",
+          "type": "Number",
+          "info": "The number of minutes to be spent by the worker on arrival at this task's destination, for route optimization purposes.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listTasks",
+      "description": "Returns a paginated collection of all tasks in your organization.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "from",
+          "type": "DatePicker",
+          "info": "The starting time of the range.",
+          "required": true
+        },
+        {
+          "name": "to",
+          "type": "DatePicker",
+          "info": "If missing, defaults to the current time. The ending time of the range. Tasks created or completed before this time will be included.",
+          "required": false
+        },
+        {
+          "name": "lastId",
+          "type": "String",
+          "info": "Used to walk the paginated response, if there is one. Tasks created after this ID will be returned.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleTask",
+      "description": "Returns a single task by its id",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "taskId",
+          "type": "String",
+          "info": "Id of the task",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleTaskByShortId",
+      "description": "Returns a single task by its short id",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "taskShortId",
+          "type": "String",
+          "info": "Short id of the task",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateTask",
+      "description": "Note that, for active tasks, only notes can be updated, while completed tasks cannot be updated in any way. ",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "taskId",
+          "type": "String",
+          "info": "Id of the task",
+          "required": true
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "info": "Task notes",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "completeTask",
+      "description": "Note that, for active tasks, only notes can be updated, while completed tasks cannot be updated in any way. ",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "taskId",
+          "type": "String",
+          "info": "Id of the task",
+          "required": true
+        },
+        {
+          "name": "success",
+          "type": "Boolean",
+          "info": "Whether the task's completion was successful.",
+          "required": true
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "info": "Any completion notes for the task.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "cloneTask",
+      "description": "The property sourceTaskId can be used to keep track of the source task from which the task was cloned.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "taskId",
+          "type": "String",
+          "info": "Id of the task",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteTask",
+      "description": "Active or completed tasks cannot be deleted.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "taskId",
+          "type": "String",
+          "info": "Id of the task",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "insertTasksAtIndex",
+      "description": "You may insert one or more tasks at a given index by providing the index as the first element in the array, followed by the task IDs.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "containerType",
+          "type": "Select",
+          "options": [
+            "organizations",
+            "teams",
+            "workers"
+          ],
+          "info": "Type of the container to insert",
+          "required": true
+        },
+        {
+          "name": "entityId",
+          "type": "String",
+          "info": "Id of the container of provided type",
+          "required": true
+        },
+        {
+          "name": "index",
+          "type": "String",
+          "info": " To append to the end, use -1 as your index. To prepend, use 0. For example, if you want to insert two tasks at position 3 for a given worker, such that all currently assigned tasks at index >= 3 are shifted forward",
+          "required": true
+        },
+        {
+          "name": "tasks",
+          "type": "List",
+          "structure": {
+            "name": "taskId",
+            "type": "String",
+            "info": "Single task Id"
+          },
+          "info": "Array of tasks to insert",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateTasks",
+      "description": "You may also fully replace a container's tasks by omitting the index and providing a complete list of task IDs.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "containerType",
+          "type": "Select",
+          "options": [
+            "organizations",
+            "teams",
+            "workers"
+          ],
+          "info": "Type of the container to insert",
+          "required": true
+        },
+        {
+          "name": "entityId",
+          "type": "String",
+          "info": "Id of the container of provided type",
+          "required": true
+        },
+        {
+          "name": "tasks",
+          "type": "List",
+          "structure": {
+            "name": "taskId",
+            "type": "String",
+            "info": "Single task Id"
+          },
+          "info": "Array of tasks to insert",
+          "required": true
+        },
+        {
+          "name": "considerDependencies",
+          "type": "Boolean",
+          "info": "Whether to include the target task's dependency family (parent and child tasks) in the resulting assignment operation.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createWebhook",
+      "description": "Webhooks make it possible for your application to be notified of important system events, as soon as these take place within Onfleet.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        },
+        {
+          "name": "url",
+          "type": "String",
+          "info": "The URL that Onfleet should issue a request against as soon as the trigger condition is met.",
+          "required": true
+        },
+        {
+          "name": "trigger",
+          "type": "Number",
+          "info": "The number corresponding to the trigger condition on which the webhook should fire: http://docs.onfleet.com/docs/webhooks",
+          "required": true
+        },
+        {
+          "name": "threshold",
+          "type": "Number",
+          "info": "For trigger 1, the time threshold in seconds; for trigger 2, the distance threshold in meters.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listWebhooks",
+      "description": "Get all webhooks",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteWebhook",
+      "description": "Delete single webhook",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from OnFleet",
+          "required": true
+        }, {
+          "name": "webhookId",
+          "type": "String",
+          "info": "Id of the webhook",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    }
+  ]
+}
