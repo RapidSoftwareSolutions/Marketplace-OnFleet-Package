@@ -10,7 +10,9 @@ The Onfleet API is a RESTful web service for developers and integrations to prog
 0. Please contact OnFleet directly for apiKey
 
  ## Webhook credentials
+ 
  Please use SDK to test this feature.
+ 
  0. Go to [RapidAPI](http://rapidapi.com)
  1. Log in or create an account
  2. Go to [My apps](https://dashboard.rapidapi.com/projects)
@@ -295,8 +297,8 @@ Create new task
 | executor      | String     | The ID of the organization that will be responsible for fulfilling the task. Defaults to the creating organization. If you delegate your deliveries to a third party, provide their organization ID.
 | destinationId | String     | The ID of the task's destination
 | recipientsIds | List       | An array containing zero or one IDs of the task's recipients
-| completeAfter | DatePicker | A date Y-m-d H:m:s for the earliest time the task should be completed.
-| completeBefore| DatePicker | A date Y-m-d H:m:s for the latest time the task should be completed.
+| completeAfter | DatePicker | A date Y-m-d H:m :s for the earliest time the task should be completed.
+| completeBefore| DatePicker | A date Y-m-d H:m :s for the latest time the task should be completed.
 | pickupTask    | Boolean    | Whether the task is a pickup task.
 | dependencies  | List       | One or more IDs of tasks which must be completed prior to this task.
 | notes         | String     | Notes for the task.
@@ -391,7 +393,7 @@ You may also fully replace a container's tasks by omitting the index and providi
 ## OnFleet.createWebhook
 Webhooks make it possible for your application to be notified of important system events, as soon as these take place within Onfleet.
 
- You can use our service as webhookUrl: 
+ You can use our service as url: 
    ```
    https://webhooks.rapidapi.com/api/message/OnFleet/webhookEvent/{projectName}/{projectKey} * see credentials description above
    ```
