@@ -144,13 +144,13 @@
           "name": "phone",
           "type": "String",
           "info": "The administrator's phone number.",
-          "required": true
+          "required": false
         },
         {
           "name": "isReadOnly",
           "type": "String",
           "info": "Whether this administrator can perform write operations.",
-          "required": true
+          "required": false
         }
       ],
       "callbacks": [
