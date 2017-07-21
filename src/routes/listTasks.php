@@ -12,7 +12,7 @@ $app->post('/api/OnFleet/listTasks', function ($request, $response, $args) {
     }
     //forming request to vendor API
     $query_str = $settings['api_url'] . "tasks/all";
-    $post_data['args']['from'] = \Models\ParamsModifier::timeToUnixtime($post_data['args']['from']);
+    $post_data['args']['from'] =\Models\ParamsModifier::timeToUnixtime($post_data['args']['from']);
     $post_data['args']['to'] = \Models\ParamsModifier::timeToUnixtime($post_data['args']['to']);
 
     $params = [

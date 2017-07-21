@@ -12,10 +12,11 @@ $app->post('/api/OnFleet/insertTasksAtIndex', function ($request, $response, $ar
     }
     //forming request to vendor API
     $query_str = $settings['api_url'] . "containers/" . $post_data['args']['containerType'] . '/' . $post_data['args']['entityId'];
-    array_unshift($post_data['args']['tasks'], $post_data['args']['index']);
+    array_unshift($post_data['args']['tasks'], (int)$post_data['args']['index']);
     $params = [
         'tasks' => 'tasks'
     ];
+
 
     try {
         $requestFacade = new \Models\RequestFacade();

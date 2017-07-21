@@ -583,7 +583,7 @@
             "info": "Single worker id "
           },
           "info": "An array of worker IDs.",
-          "required": true
+          "required": false
         },
         {
           "name": "managers",
@@ -594,7 +594,7 @@
             "info": "Single manager id "
           },
           "info": "An array of managing administrator IDs.",
-          "required": true
+          "required": false
         },
         {
           "name": "hub",

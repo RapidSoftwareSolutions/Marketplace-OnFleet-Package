@@ -4,7 +4,7 @@ $app->post('/api/OnFleet/createTeam', function ($request, $response, $args) {
 
     //checking properly formed json
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['apiKey', 'name', 'workers', 'managers']);
+    $validateRes = $checkRequest->validate($request, ['apiKey', 'name']);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
     } else {

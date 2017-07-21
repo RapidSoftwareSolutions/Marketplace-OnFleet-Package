@@ -13,6 +13,7 @@ class RequestFacade
                 $body[$key] = $post_data['args'][$value];
             }
         }
+
         $result = $client->request($method, $query_str, [
             'auth' => [$post_data['args']['apiKey'], ''],
             $paramType => $body

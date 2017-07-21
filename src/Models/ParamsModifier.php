@@ -34,7 +34,7 @@ class ParamsModifier
     public static function timeToUnixtime ($date){
         if (!empty($date)) {
             $dateTime = new \DateTime($date);
-            return $dateTime->getTimestamp();
+            return $dateTime->getTimestamp().'000';
         } else {
             return $date;
         }

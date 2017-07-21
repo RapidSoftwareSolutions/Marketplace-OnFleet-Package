@@ -20,7 +20,8 @@ $app->post('/api/OnFleet/getWorkersByLocation', function ($request, $response, $
         'latitude' => 'latitude',
         'radius' => 'radius'
     ];
-
+//    var_dump($post_data);
+//    exit();
     try {
         $requestFacade = new \Models\RequestFacade();
         $resp = $requestFacade->makeRequest(new GuzzleHttp\Client(), $params, $post_data, $query_str);
@@ -39,7 +40,7 @@ $app->post('/api/OnFleet/getWorkersByLocation', function ($request, $response, $
         }
 
     } catch (\GuzzleHttp\Exception\ClientException $exception) {
-        $responseBody = $exception->getResponse()->getReasonPhrase();
+        $responseBody = $exception->getResponse()->getBody()->getContents();
         $result['callback'] = 'error';
         $result['contextWrites']['to']['status_code'] = 'API_ERROR';
         $result['contextWrites']['to']['status_msg'] = $responseBody;

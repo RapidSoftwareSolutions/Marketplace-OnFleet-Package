@@ -12,6 +12,7 @@ $app->post('/api/OnFleet/createWebhook', function ($request, $response, $args) {
     }
     //forming request to vendor API
     $query_str = $settings['api_url'] . "webhooks";
+    $post_data['args']['trigger'] = (int)$post_data['args']['trigger'];
     $params = [
         'url' => 'url',
         'trigger'=> 'trigger',
@@ -36,7 +37,7 @@ $app->post('/api/OnFleet/createWebhook', function ($request, $response, $args) {
         }
 
     } catch (\GuzzleHttp\Exception\ClientException $exception) {
-        $responseBody = $exception->getResponse()->getReasonPhrase();
+        $responseBody = $exception->getResponse()->getBody()->getContents();
         $result['callback'] = 'error';
         $result['contextWrites']['to']['status_code'] = 'API_ERROR';
         $result['contextWrites']['to']['status_msg'] = $responseBody;
