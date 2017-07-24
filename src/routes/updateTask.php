@@ -18,7 +18,7 @@ $app->post('/api/OnFleet/updateTask', function ($request, $response, $args) {
 
     try {
         $requestFacade = new \Models\RequestFacade();
-        $resp = $requestFacade->makeRequest(new GuzzleHttp\Client(), $params, $post_data, $query_str, 'PUT');
+        $resp = $requestFacade->makeRequest(new GuzzleHttp\Client(), $params, $post_data, $query_str, 'PUT', 'json');
 
         $responseBody = $resp->getBody()->getContents();
         $rawBody = json_decode($resp->getBody());
@@ -34,7 +34,7 @@ $app->post('/api/OnFleet/updateTask', function ($request, $response, $args) {
         }
 
     } catch (\GuzzleHttp\Exception\ClientException $exception) {
-        $responseBody = $exception->getResponse()->getReasonPhrase();
+        $responseBody = $exception->getResponse()->getBody()->getContents();
         $result['callback'] = 'error';
         $result['contextWrites']['to']['status_code'] = 'API_ERROR';
         $result['contextWrites']['to']['status_msg'] = $responseBody;
