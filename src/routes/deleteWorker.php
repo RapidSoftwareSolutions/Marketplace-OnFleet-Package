@@ -29,6 +29,7 @@ $app->post('/api/OnFleet/deleteWorker', function ($request, $response, $args) {
 
         $all_data[] = $rawBody;
         if ($response->getStatusCode() == '200') {
+            $all_data = ['result' => 'deleted'];
             $result['callback'] = 'success';
             $result['contextWrites']['to'] = is_array($all_data) ? $all_data : json_decode($all_data);
         } else {
