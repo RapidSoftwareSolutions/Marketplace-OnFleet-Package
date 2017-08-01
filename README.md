@@ -1,4 +1,4 @@
-[![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/OnFleet/functions?utm_source=RapidAPIGitHub_OnFleetFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
+[![](https://scdn.rapidapi.io/RapidAPI_banner.png)](https://rapidapi.io/package/OnFleet/functions?utm_source=RapidAPIGitHub_OnFleetFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
 
 # OnFleet Package
 The Onfleet API is a RESTful web service for developers and integrations to programmatically interact with Onfleet’s data and real-time delivery management and analytics functionality.
@@ -13,9 +13,9 @@ The Onfleet API is a RESTful web service for developers and integrations to prog
  
  Please use SDK to test this feature.
  
- 0. Go to [RapidAPI](http://rapidapi.com)
+ 0. Go to [RapidAPI](http://rapidapi.io)
  1. Log in or create an account
- 2. Go to [My apps](https://dashboard.rapidapi.com/projects)
+ 2. Go to [My apps](https://dashboard.rapidapi.io/projects)
  3. Add new project with projectName to get your project Key
  
  | Field      | Type       | Description
@@ -395,7 +395,7 @@ Webhooks make it possible for your application to be notified of important syste
 
  You can use our service as url: 
    ```
-   https://webhooks.rapidapi.com/api/message/OnFleet/webhookEvent/{projectName}/{projectKey} * see credentials description above
+   https://webhooks.rapidapi.io/api/message/OnFleet/webhookEvent/{projectName}/{projectKey} * see credentials description above
    ```
 
 | Field    | Type       | Description
