@@ -32,7 +32,7 @@
         }
       },
       "steps": [
-        "Go to add createWebhook block",
+        "Navigate to https://rapidapi.com/package/OnFleet/functions/createWebhook",
         "Set webhookUrl to __WEBHOOK_URL__"
       ],
       "args": [
